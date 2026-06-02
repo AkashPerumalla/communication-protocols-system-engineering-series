@@ -4,17 +4,15 @@ public class UDPServer {
 
     public static void main(String[] args) throws Exception {
 
-        DatagramSocket socket = new DatagramSocket(6000);
+        DatagramSocket socket = new DatagramSocket(9001);
 
         byte[] buffer = new byte[1024];
 
-        DatagramPacket packet =
-                new DatagramPacket(buffer, buffer.length);
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
 
         socket.receive(packet);
 
-        String message =
-                new String(packet.getData(), 0, packet.getLength());
+        String message = new String(packet.getData(), 0, packet.getLength());
 
         System.out.println("Client: " + message);
 

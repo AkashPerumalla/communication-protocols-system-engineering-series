@@ -5,9 +5,9 @@ public class TCPServer {
 
     public static void main(String[] args) throws Exception {
 
-        ServerSocket serverSocket = new ServerSocket(5000);
+        ServerSocket serverSocket = new ServerSocket(9000);
 
-        System.out.println("Server listening on port 5000");
+        System.out.println("Server listening on port 9000");
 
         Socket clientSocket = serverSocket.accept();
 

@@ -5,7 +5,7 @@ public class TCPClient {
 
     public static void main(String[] args) throws Exception {
 
-        Socket socket = new Socket("localhost", 5000);
+        Socket socket = new Socket("localhost", 9000);
 
         BufferedReader in =
                 new BufferedReader(

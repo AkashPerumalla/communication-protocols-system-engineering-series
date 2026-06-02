@@ -13,7 +13,7 @@ public class UDPClient {
                         message.getBytes(),
                         message.length(),
                         InetAddress.getByName("localhost"),
-                        6000);
+                        9001);
 
         socket.send(packet);
 

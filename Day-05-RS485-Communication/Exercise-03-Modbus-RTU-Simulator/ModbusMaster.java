@@ -1,5 +1,6 @@
-import java.io.*;
-import java.net.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.logging.Logger;
 
 public class ModbusMaster {

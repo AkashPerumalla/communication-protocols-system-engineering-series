@@ -1,0 +1,8 @@
+# ICMP Echo Request/Reply sample
+IP: 192.168.1.100 -> 192.168.1.1
+eth.src: 11:22:33:44:55:66
+eth.dst: AA:BB:CC:DD:EE:FF
+icmp.type: 8 (echo request)
+icmp.seq: 1
+
+Reply: icmp.type: 0 (echo reply) seq:1

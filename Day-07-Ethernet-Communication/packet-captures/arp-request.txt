@@ -1,0 +1,10 @@
+# ARP Request - textual capture
+Frame: Broadcast
+eth.dst: ff:ff:ff:ff:ff:ff
+eth.src: 11:22:33:44:55:66
+arp.opcode: request (1)
+arp.sender.ip: 192.168.1.100
+arp.sender.mac: 11:22:33:44:55:66
+arp.target.ip: 192.168.1.1
+
+Notes: This is the "Who has 192.168.1.1? Tell 192.168.1.100" example.

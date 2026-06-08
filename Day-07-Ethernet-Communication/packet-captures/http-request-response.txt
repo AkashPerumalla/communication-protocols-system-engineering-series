@@ -1,0 +1,10 @@
+# HTTP Request/Response sample
+Request: GET /index.html HTTP/1.1
+Host: example.com
+User-Agent: demo
+
+Response: 200 OK
+Content-Type: text/html
+Body: <html>...</html>
+
+Filters: `http.request` / `http.response`

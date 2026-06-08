@@ -1,0 +1,9 @@
+# TCP 3-way handshake (summary)
+Client: 10.0.0.5:34567
+Server: 10.0.0.1:80
+
+1) Client -> Server: SYN seq=1000
+2) Server -> Client: SYN,ACK seq=2000 ack=1001
+3) Client -> Server: ACK seq=1001 ack=2001
+
+Explain: Use `tcp.flags` and `tcp.seq`/`tcp.ack` fields to analyze handshake.

@@ -1,0 +1,7 @@
+# DNS Query sample
+Query: example.com A
+Src: 10.0.0.5:54321 -> 8.8.8.8:53
+Transaction ID: 0x1a2b
+Response: 93.184.216.34
+
+Filters: `dns.qry.name == "example.com"` or `udp.port == 53`

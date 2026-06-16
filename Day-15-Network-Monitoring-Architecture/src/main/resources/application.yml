@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: day15-network-monitoring-architecture
+  datasource:
+    url: jdbc:h2:mem:day15db;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      mode: always
+  task:
+    scheduling:
+      pool:
+        size: 4
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.sky2dev.day15: DEBUG
+    org.springframework.scheduling: INFO

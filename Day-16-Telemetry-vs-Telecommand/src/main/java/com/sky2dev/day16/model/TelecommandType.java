@@ -1,0 +1,14 @@
+package com.sky2dev.day16.model;
+
+public enum TelecommandType {
+    RESTART_DEVICE,
+    ENABLE_INTERFACE,
+    DISABLE_INTERFACE,
+    CHANGE_FREQUENCY,
+    RESET_MODEM,
+    ENABLE_CARRIER,
+    DISABLE_CARRIER,
+    CLEAR_ALARM,
+    SWITCH_TO_BACKUP_LINK,
+    SYNC_CONFIGURATION
+}

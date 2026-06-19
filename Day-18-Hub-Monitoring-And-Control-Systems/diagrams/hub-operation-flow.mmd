@@ -1,0 +1,11 @@
+flowchart TD
+    A[Telemetry Ingestion] --> B[Threshold Evaluation]
+    B --> C{Alarm Triggered?}
+    C -- No --> D[Dashboard Refresh]
+    C -- Yes --> E[Alarm Created]
+    E --> F[Notification Dispatch]
+    E --> G[Automation Evaluation]
+    G --> H[Control Command Execution]
+    H --> I[Device State Update]
+    I --> D
+    D --> J[NOC Control Center]

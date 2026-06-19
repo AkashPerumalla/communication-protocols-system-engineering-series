@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant Operator
+    participant API as ControlController
+    participant Service as DeviceControlService
+    participant Repo as ControlCommandRepository
+    participant DeviceRepo as HubDeviceRepository
+    Operator->>API: POST /api/control/reboot/{id}
+    API->>Service: executeCommand(deviceId, REBOOT_DEVICE)
+    Service->>DeviceRepo: findById(deviceId)
+    Service->>DeviceRepo: save(updated state)
+    Service->>Repo: save(command audit)
+    Repo-->>Service: command persisted
+    Service-->>API: ControlCommandDto
+    API-->>Operator: CONTROL EXECUTED

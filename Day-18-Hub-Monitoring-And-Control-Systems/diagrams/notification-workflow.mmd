@@ -1,0 +1,14 @@
+flowchart LR
+    A[Critical Alarm] --> B{Channel Policy}
+    B --> C[EMAIL]
+    B --> D[SMS]
+    B --> E[WEBHOOK]
+    B --> F[SLACK]
+    B --> G[TEAMS]
+    B --> H[ITSM]
+    C --> I[(NotificationEvent)]
+    D --> I
+    E --> I
+    F --> I
+    G --> I
+    H --> I

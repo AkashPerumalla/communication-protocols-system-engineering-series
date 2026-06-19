@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant API as ReportController
+    participant Service as ReportingService
+    participant DeviceRepo as HubDeviceRepository
+    participant AlarmRepo as AlarmRepository
+    participant ReportRepo as ReportRepository
+    API->>Service: generateReports(noc-analytics-service)
+    Service->>DeviceRepo: count()
+    Service->>AlarmRepo: countByStatusNot(CLOSED)
+    Service->>ReportRepo: saveAll(DAILY,WEEKLY,ALARM,AVAILABILITY,PERFORMANCE)
+    ReportRepo-->>Service: persisted reports
+    Service-->>API: report list
+    API-->>Client: REPORT GENERATED

@@ -1,0 +1,8 @@
+stateDiagram-v2
+    [*] --> OPEN
+    OPEN --> ACKNOWLEDGED: Operator ACK
+    OPEN --> RESOLVED: Auto recovery success
+    ACKNOWLEDGED --> RESOLVED: Corrective action
+    RESOLVED --> CLOSED: Verification complete
+    ACKNOWLEDGED --> OPEN: Condition reoccurs
+    CLOSED --> OPEN: New incident

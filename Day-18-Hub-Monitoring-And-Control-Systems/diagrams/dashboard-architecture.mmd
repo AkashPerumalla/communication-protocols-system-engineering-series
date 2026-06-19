@@ -1,0 +1,10 @@
+flowchart TD
+    A[DashboardController] --> B[DashboardService]
+    B --> C[(HubDevice)]
+    B --> D[(Alarm)]
+    B --> E[(ControlCommand)]
+    B --> F[Availability Calculator]
+    F --> G[Dashboard DTO]
+    C --> G
+    D --> G
+    E --> G

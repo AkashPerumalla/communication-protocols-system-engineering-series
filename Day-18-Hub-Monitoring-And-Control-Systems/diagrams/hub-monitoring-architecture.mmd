@@ -1,0 +1,17 @@
+flowchart TD
+    A[NOC Operators] --> B[Hub Monitoring API Layer]
+    B --> C[HubMonitoringService]
+    B --> D[AlarmEngine]
+    B --> E[DeviceControlService]
+    C --> F[(HubDevice)]
+    C --> G[(DeviceMetric)]
+    D --> H[(Alarm)]
+    E --> I[(ControlCommand)]
+    D --> J[NotificationService]
+    J --> K[(NotificationEvent)]
+    L[ReportingService] --> M[(Report)]
+    N[AutomationService] --> E
+    O[NocControlCenterService] --> C
+    O --> D
+    O --> J
+    O --> L

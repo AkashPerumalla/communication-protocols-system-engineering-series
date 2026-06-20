@@ -30,6 +30,10 @@ Each day contains:
 - Wireshark Analysis
 - Interview Questions
 
+## Latest Module
+
+- Day-19-Satellite-Communication-Systems: Spring Boot SatCom NOC simulation with link budgets, frequency planning, monitoring, alarms, troubleshooting, VSAT topology, and deterministic API test harness.
+
 ## Technologies
 
 - Java

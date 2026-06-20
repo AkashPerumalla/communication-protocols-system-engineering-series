@@ -1,0 +1,6 @@
+insert into managed_device (id, baseline_severity, category, ip_address, location, name, satcom, telecom) values (1, 'MAJOR', 'Telecom', '10.10.0.11', 'NOC-A', 'Core-Router-01', false, true);
+insert into managed_device (id, baseline_severity, category, ip_address, location, name, satcom, telecom) values (2, 'WARNING', 'Telecom', '10.10.0.12', 'NOC-B', 'Backhaul-Switch-01', false, true);
+insert into managed_device (id, baseline_severity, category, ip_address, location, name, satcom, telecom) values (3, 'CRITICAL', 'Infrastructure', '10.20.0.21', 'DataCenter-1', 'Power-Unit-01', false, false);
+insert into managed_device (id, baseline_severity, category, ip_address, location, name, satcom, telecom) values (4, 'MAJOR', 'Application', '10.20.0.22', 'DataCenter-1', 'App-Server-01', false, false);
+insert into managed_device (id, baseline_severity, category, ip_address, location, name, satcom, telecom) values (5, 'CRITICAL', 'SatCom', '10.30.0.31', 'Hub-Station', 'Hub-Modem-01', true, false);
+insert into managed_device (id, baseline_severity, category, ip_address, location, name, satcom, telecom) values (6, 'MAJOR', 'SatCom', '10.30.0.32', 'Remote-Site', 'Remote-Terminal-01', true, false);

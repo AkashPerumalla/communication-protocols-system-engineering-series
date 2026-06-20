@@ -1,0 +1,202 @@
+{
+  "info": {
+    "_postman_id": "4c0855df-3d98-4b76-893d-53a2a514f507",
+    "name": "Day-19 SatCom NOC API Collection",
+    "description": "Satellite Communication Systems - Practical Exercises with Solutions. Includes all required Day-19 GET and POST endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8085"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Satellite Inventory",
+      "item": [
+        {
+          "name": "GET /api/satellites",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/satellites"
+          }
+        },
+        {
+          "name": "GET /api/transponders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/transponders"
+          }
+        },
+        {
+          "name": "GET /api/stations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/stations"
+          }
+        },
+        {
+          "name": "GET /api/links",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/links"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 - Link Budget",
+      "item": [
+        {
+          "name": "GET /api/link-budget",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/link-budget"
+          }
+        },
+        {
+          "name": "POST /api/link-budget/calculate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"linkName\": \"Lab-Link-01\",\n  \"txPowerDbw\": 18.5,\n  \"txAntennaGainDbi\": 43.2,\n  \"implementationLossDb\": 1.2,\n  \"slantRangeKm\": 38500,\n  \"frequencyGhz\": 14.0,\n  \"gOverTDbPerK\": 15.5,\n  \"noiseTemperatureK\": 320,\n  \"requiredCnDb\": 10.5\n}"
+            },
+            "url": "{{baseUrl}}/api/link-budget/calculate"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 - Frequency Planning",
+      "item": [
+        {
+          "name": "GET /api/frequency-plan",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/frequency-plan"
+          }
+        },
+        {
+          "name": "POST /api/frequency-plan/generate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transponderSatelliteName\": \"INSAT-4A\",\n  \"transponderNumber\": 1,\n  \"channelPrefix\": \"LAB-CH\",\n  \"startUplinkFrequency\": 6.5,\n  \"startDownlinkFrequency\": 4.35,\n  \"channelBandwidth\": 2.0,\n  \"guardBand\": 0.2,\n  \"channelCount\": 3\n}"
+            },
+            "url": "{{baseUrl}}/api/frequency-plan/generate"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 - Monitoring and Alarms",
+      "item": [
+        {
+          "name": "GET /api/metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/metrics"
+          }
+        },
+        {
+          "name": "GET /api/alarms",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/alarms"
+          }
+        },
+        {
+          "name": "POST /api/alarms/simulate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"linkName\": \"Hub-to-Site-5\",\n  \"cnDb\": 7.0,\n  \"ebNo\": 4.8,\n  \"ber\": 0.00032,\n  \"rxPowerDbm\": -76.0,\n  \"lockStatus\": \"LOST\"\n}"
+            },
+            "url": "{{baseUrl}}/api/alarms/simulate"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 - Troubleshooting",
+      "item": [
+        {
+          "name": "GET /api/troubleshooting",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/troubleshooting"
+          }
+        },
+        {
+          "name": "POST /api/troubleshooting/analyze",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"linkName\": \"Hub-to-Site-5\",\n  \"cnDb\": 7.0,\n  \"ebNo\": 4.8,\n  \"ber\": 0.00032,\n  \"rxPowerDbm\": -76.0,\n  \"lockStatus\": \"LOST\"\n}"
+            },
+            "url": "{{baseUrl}}/api/troubleshooting/analyze"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 - VSAT and Dashboard",
+      "item": [
+        {
+          "name": "GET /api/vsat",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/vsat"
+          }
+        },
+        {
+          "name": "GET /api/dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/dashboard"
+          }
+        }
+      ]
+    }
+  ]
+}

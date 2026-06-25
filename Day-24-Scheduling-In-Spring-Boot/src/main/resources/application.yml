@@ -1,0 +1,59 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: day24-scheduling-in-spring-boot
+  datasource:
+    url: jdbc:h2:mem:day24db;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  task:
+    scheduling:
+      thread-name-prefix: Scheduler-Thread-
+      pool:
+        size: 10
+      shutdown:
+        await-termination: true
+        await-termination-period: 30s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+app:
+  scheduling:
+    enabled: true
+
+scheduler:
+  telemetry-rate: 5000
+  health-rate: 15000
+  alarm-rate: 20000
+  dashboard-rate: 30000
+  notification-rate: 45000
+  recovery-rate: 60000
+  maintenance-delay: 70000
+  report-daily-cron: "0 */2 * * * *"
+  report-performance-cron: "15 */2 * * * *"
+  archive-cron: "30 */2 * * * *"
+
+logging:
+  level:
+    com.sky2dev.day24: INFO

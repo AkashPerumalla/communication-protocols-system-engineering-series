@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: day26-mysql-pv
 spec:
+  storageClassName: ""
   capacity:
     storage: 2Gi
   accessModes:

@@ -4,6 +4,7 @@ metadata:
   name: day26-mysql-pvc
   namespace: day26-platform
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:

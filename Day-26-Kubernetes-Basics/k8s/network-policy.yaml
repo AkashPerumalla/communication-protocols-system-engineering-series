@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: day26-platform-policy
+  namespace: day26-platform
+spec:
+  podSelector:
+    matchLabels:
+      app: day26-platform
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector: {}
+      ports:
+        - protocol: TCP
+          port: 8091
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app: day26-mysql
+      ports:
+        - protocol: TCP
+          port: 3306
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: day26-mysql-policy
+  namespace: day26-platform
+spec:
+  podSelector:
+    matchLabels:
+      app: day26-mysql
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: day26-platform
+      ports:
+        - protocol: TCP
+          port: 3306

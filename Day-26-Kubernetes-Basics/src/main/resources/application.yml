@@ -1,0 +1,85 @@
+server:
+  port: ${SERVER_PORT:8091}
+  shutdown: graceful
+
+spring:
+  application:
+    name: day26-kubernetes-basics
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:day26db;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  task:
+    scheduling:
+      pool:
+        size: 4
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: Day-26 Kubernetes Device Monitoring Platform
+    description: Kubernetes-first Telecom, SatCom, and IoT monitoring backend
+    version: 1.0.0
+    namespace: ${PLATFORM_NAMESPACE:day26-platform}
+    ingress-host: ${PLATFORM_INGRESS_HOST:day26.local}
+
+app:
+  scheduling:
+    enabled: ${APP_SCHEDULING_ENABLED:true}
+  cluster:
+    name: ${PLATFORM_CLUSTER_NAME:docker-desktop}
+    namespace: ${PLATFORM_NAMESPACE:day26-platform}
+    node-count: ${PLATFORM_NODE_COUNT:3}
+  deployment:
+    primary-name: ${PLATFORM_PRIMARY_DEPLOYMENT:device-monitoring-platform}
+    image-tag: ${PLATFORM_IMAGE_TAG:1.0.0}
+  scheduler:
+    telemetry-delay-ms: ${APP_TELEMETRY_DELAY_MS:120000}
+    alarm-delay-ms: ${APP_ALARM_DELAY_MS:180000}
+    notification-delay-ms: ${APP_NOTIFICATION_DELAY_MS:240000}
+    deployment-delay-ms: ${APP_DEPLOYMENT_DELAY_MS:150000}
+    cluster-delay-ms: ${APP_CLUSTER_DELAY_MS:210000}
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+  level:
+    com.sky2dev.day26: INFO
+    org.springframework: INFO

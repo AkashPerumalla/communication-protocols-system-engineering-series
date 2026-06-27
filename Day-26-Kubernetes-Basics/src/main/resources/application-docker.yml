@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/day26db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${SPRING_DATASOURCE_USERNAME:day26}
+    password: ${SPRING_DATASOURCE_PASSWORD:day26pass}
+
+app:
+  cluster:
+    name: docker-compose
+    namespace: day26-docker

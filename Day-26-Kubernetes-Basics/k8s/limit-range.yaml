@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: day26-limit-range
+  namespace: day26-platform
+spec:
+  limits:
+    - type: Container
+      defaultRequest:
+        cpu: 200m
+        memory: 256Mi
+      default:
+        cpu: 500m
+        memory: 512Mi

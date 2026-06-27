@@ -1,0 +1,15 @@
+target
+.git
+.idea
+.vscode
+logs
+*.iml
+.DS_Store
+README_assets
+out
+.mvn
+captures
+test-logs
+test-results
+*.log
+k8s/*.bak

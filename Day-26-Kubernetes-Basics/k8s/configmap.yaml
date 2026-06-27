@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: day26-config
+  namespace: day26-platform
+data:
+  SPRING_PROFILES_ACTIVE: kubernetes
+  SERVER_PORT: "8091"
+  PLATFORM_CLUSTER_NAME: docker-desktop
+  PLATFORM_NAMESPACE: day26-platform
+  PLATFORM_PRIMARY_DEPLOYMENT: device-monitoring-platform
+  PLATFORM_IMAGE_TAG: 1.0.0
+  MYSQL_HOST: day26-mysql
+  MYSQL_DATABASE: day26db
+  APP_SCHEDULING_ENABLED: "true"

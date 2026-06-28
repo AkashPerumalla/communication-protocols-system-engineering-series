@@ -1,0 +1,3 @@
+Telecom SOP
+Use maintenance window 02:00-04:00 UTC.
+Log all change request IDs in ticket notes.

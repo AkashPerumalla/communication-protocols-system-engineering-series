@@ -1,0 +1,8 @@
+flowchart LR
+A[Document Loader] --> B[Chunking]
+B --> C[Embeddings]
+C --> D[ChromaDB]
+D --> E[Retriever Top-K]
+E --> F[Prompt Augmentation]
+F --> G[LLM]
+G --> H[Answer with Citations]

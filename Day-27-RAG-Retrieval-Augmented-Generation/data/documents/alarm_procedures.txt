@@ -1,0 +1,3 @@
+Alarm Procedures
+Critical alarm acknowledgment SLA is 5 minutes.
+Escalate to L2 after two failed remediation attempts.

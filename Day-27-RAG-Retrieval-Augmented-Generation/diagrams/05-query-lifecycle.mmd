@@ -1,0 +1,11 @@
+sequenceDiagram
+participant U as User
+participant API as FastAPI
+participant RET as Retriever
+participant LLM as LLM Service
+U->>API: POST /api/query
+API->>RET: retrieve(question, top_k)
+RET-->>API: context chunks
+API->>LLM: generate(context, question)
+LLM-->>API: grounded answer
+API-->>U: answer + citations + markers

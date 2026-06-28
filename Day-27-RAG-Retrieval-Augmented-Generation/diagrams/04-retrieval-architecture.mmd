@@ -1,0 +1,6 @@
+flowchart LR
+Q[User Query] --> E[Query Embedding]
+E --> V[Vector Search]
+V --> K[Top-K Results]
+K --> F[Metadata Filter]
+F --> R[Ranked Context]

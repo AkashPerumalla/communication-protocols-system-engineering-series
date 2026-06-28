@@ -1,0 +1,10 @@
+__pycache__
+.pytest_cache
+.venv
+.git
+.vscode
+*.pyc
+*.pyo
+data/chromadb/*
+screenshots
+poster

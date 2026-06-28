@@ -1,0 +1,3 @@
+Router-01 Device Manual
+Interface monitoring interval is 30 seconds.
+Alarm threshold for packet loss is 2 percent.

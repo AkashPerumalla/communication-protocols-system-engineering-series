@@ -1,0 +1,4 @@
+Incident Response Runbook
+Step 1 isolate impacted node.
+Step 2 verify telemetry drift.
+Step 3 trigger rollback.

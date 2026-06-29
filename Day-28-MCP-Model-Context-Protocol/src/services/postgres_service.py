@@ -2,6 +2,7 @@ from typing import Any
 
 from src.config.settings import AppSettings
 from src.exceptions.custom_exceptions import DatabaseUnavailableError
+from src.utils.sql_guard import validate_read_only_sql
 
 
 class PostgresService:
@@ -9,12 +10,11 @@ class PostgresService:
         self._settings = settings
 
     def query(self, sql: str) -> dict[str, Any]:
-        if not sql.strip():
-            raise DatabaseUnavailableError("SQL query cannot be empty")
+        safe_sql = validate_read_only_sql(sql)
         if not self._settings.postgres_enabled:
             return {
                 "mode": "mock",
-                "sql": sql,
+                "sql": safe_sql,
                 "rows": [{"id": 1, "name": "fallback-result"}],
                 "row_count": 1,
             }
@@ -26,12 +26,12 @@ class PostgresService:
 
         with psycopg.connect(self._settings.postgres_dsn) as conn:
             with conn.cursor() as cur:
-                cur.execute(sql)
+                cur.execute(safe_sql)
                 if cur.description is None:
-                    return {"mode": "postgres", "sql": sql, "rows": [], "row_count": 0}
+                    return {"mode": "postgres", "sql": safe_sql, "rows": [], "row_count": 0}
                 columns = [col.name for col in cur.description]
                 rows = [dict(zip(columns, row)) for row in cur.fetchall()]
-                return {"mode": "postgres", "sql": sql, "rows": rows, "row_count": len(rows)}
+                return {"mode": "postgres", "sql": safe_sql, "rows": rows, "row_count": len(rows)}
 
     def status(self) -> dict[str, Any]:
         return {"postgres_enabled": self._settings.postgres_enabled, "dsn": self._settings.postgres_dsn}

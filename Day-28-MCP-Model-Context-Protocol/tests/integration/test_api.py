@@ -10,6 +10,7 @@ def test_health_endpoint(app) -> None:
     assert response.status_code == 200
     body = response.json()
     assert body["marker"] == SYSTEM_HEALTHY
+    assert "x-request-id" in response.headers
 
 
 def test_list_tools_endpoint(app) -> None:

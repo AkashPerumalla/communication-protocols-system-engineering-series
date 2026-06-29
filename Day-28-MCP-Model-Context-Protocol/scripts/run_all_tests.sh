@@ -30,7 +30,7 @@ echo "[1/7] Sync dependencies with uv"
 "${UV_BIN}" sync >/dev/null
 
 echo "[2/7] Run pytest suite"
-"${UV_BIN}" run pytest
+"${UV_BIN}" run pytest --cov=src --cov-fail-under=75
 
 echo "[3/7] Start FastAPI service"
 "${UV_BIN}" run uvicorn src.main:app --host 0.0.0.0 --port "${PORT}" >"${APP_LOG}" 2>&1 &

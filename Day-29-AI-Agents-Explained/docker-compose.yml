@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    container_name: day29-agent-app
+    ports:
+      - "8094:8094"
+    environment:
+      APP_PORT: 8094
+      DETERMINISTIC_MODE: "true"
+      POSTGRES_ENABLED: "false"
+      POSTGRES_DSN: "postgresql://postgres:postgres@postgres:5432/day29_agents"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8094/health | grep -q 'SYSTEM_HEALTHY'"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  postgres:
+    image: postgres:16
+    container_name: day29-agent-postgres
+    profiles: ["postgres"]
+    environment:
+      POSTGRES_DB: day29_agents
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d day29_agents"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s

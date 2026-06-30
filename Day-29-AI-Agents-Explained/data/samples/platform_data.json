@@ -1,0 +1,19 @@
+{
+  "telemetry": [
+    {"device_id": "SAT-HUB-001", "metric": "uplink_snr", "value": 12.4, "unit": "dB", "timestamp": "2026-06-29T00:00:00+00:00"},
+    {"device_id": "SAT-HUB-002", "metric": "downlink_power", "value": -55.2, "unit": "dBm", "timestamp": "2026-06-29T00:00:00+00:00"}
+  ],
+  "alarms": [
+    {"alarm_id": "ALM-1001", "device_id": "SAT-HUB-001", "severity": "MAJOR", "status": "OPEN", "description": "Packet drop above threshold"},
+    {"alarm_id": "ALM-1002", "device_id": "IOT-GW-009", "severity": "MINOR", "status": "OPEN", "description": "Battery level low"}
+  ],
+  "devices": [
+    {"device_id": "SAT-HUB-001", "status": "ONLINE", "site": "Chennai"},
+    {"device_id": "SAT-HUB-002", "status": "ONLINE", "site": "Mumbai"},
+    {"device_id": "IOT-GW-009", "status": "DEGRADED", "site": "Bengaluru"}
+  ],
+  "logs": [
+    {"ts": "2026-06-29T00:00:00+00:00", "level": "INFO", "message": "MCP server initialized"},
+    {"ts": "2026-06-29T00:00:00+00:00", "level": "WARN", "message": "High latency observed on SAT-HUB-001"}
+  ]
+}

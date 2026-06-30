@@ -1,0 +1,32 @@
+[project]
+name = "day29-ai-agent-platform"
+version = "1.0.0"
+description = "Enterprise AI Agent platform for NOC/Telecom/SatCom/IoT"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+authors = [{ name = "Sky2Dev" }]
+dependencies = [
+  "fastapi==0.116.0",
+  "uvicorn==0.35.0",
+  "pydantic==2.11.7",
+  "pydantic-settings==2.10.1",
+  "fastmcp==2.10.6",
+  "openai==1.95.1",
+  "psutil==6.1.1",
+  "httpx==0.28.1",
+  "psycopg[binary]==3.2.9"
+]
+
+[dependency-groups]
+dev = [
+  "pytest==8.4.1",
+  "pytest-cov==6.2.1"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q --disable-warnings"
+
+[tool.uv]
+default-groups = ["dev"]
